@@ -147,11 +147,9 @@ int main ()
 	int InsertionCopy[100];
 	int QuickCopy[100];
 	
-	clock_t start, end;
-    double cpu_time_used;
-    
-    long long start_time, end_time;
+	clock_t start_time, end_time;
     double execution_time;
+    double elapsed_time;
 	
 	printf("Introduce the number of elements n = ");
 	scanf("%d", &n);
@@ -170,69 +168,43 @@ int main ()
 	printf("\n");
 	
 	memcpy(BubbleCopy, a, n*sizeof(int));
-	start_time = (long long)time(NULL)*1000000LL;
-	printf("Start time: %lld\n", (long long)start_time);
-	bubble_sort(BubbleCopy, n);	
-	end_time = (long long)time(NULL)*1000000LL;
+	start_time = clock();
+    bubble_sort(BubbleCopy, n);	
+    end_time = clock();
+    elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	printf("The BubbleSort-ed array: \n");
+	printf("Time taken to execute bubblesort: %f seconds\n", elapsed_time);
 	print_array(BubbleCopy, n);
-	printf("End time: %lld\n", (long long)end_time);
-	execution_time = (double) (end_time - start_time); 
-    printf("Execution time of BubbleSort: %.8f microseconds\n", execution_time);
     printf("\n\n");
 	
 	
 	memcpy(SelectionCopy, a, n*sizeof(int));
-	/*start = clock();
-	printf("Start time: %ld\n", (long)start);*/
-	start_time = (long long)time(NULL)*1000000LL;
-	printf("Start time: %lld\n", (long long)start_time);
+	start_time = clock();
 	selection_sort(SelectionCopy, n);
-	//end = clock();
-	end_time = (long long)time(NULL)*1000000LL;	
+	end_time = clock();
+	elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	printf("The SelectionSort-ed array: \n");
-	print_array(SelectionCopy, n);
-	/*printf("End time: %ld\n", (long)end);
-	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC; 
-    printf("Execution time of SelectionSort: %f seconds\n", cpu_time_used);*/
-    printf("End time: %lld\n", (long long)end_time);
-	execution_time = (double) (end_time - start_time); 
-    printf("Execution time of SelectionSort: %.8f microseconds\n", execution_time);
+	printf("Execution time of SelectionSort: %f seconds\n", elapsed_time);
+    print_array(SelectionCopy, n);
     printf("\n\n");
 	
 	memcpy(InsertionCopy, a, n*sizeof(int));
-	start = clock();
-	printf("Start time: %ld\n", (long)start);
-	//start_time = (long long)time(NULL)*1000000LL;
-	//printf("Start time: %lld\n", (long long)start_time);
+	start_time = clock();
 	insertion_sort(InsertionCopy, n);
-	end = clock();
-	//end_time = (long long)time(NULL)*1000000LL;	
+	end_time = clock();
+	elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	printf("The InsertionSort-ed array: \n");
+	printf("Execution time of InsertionSort: %f seconds\n", elapsed_time);
 	print_array(InsertionCopy, n);
-	printf("End time: %ld\n", (long)end);
-	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC; 
-    printf("Execution time of InsertionSort: %f seconds\n", cpu_time_used);
-    //printf("End time: %lld\n", (long long)end_time);
-	//execution_time = (double) (end_time - start_time); 
-    //printf("Execution time of InsertionSort: %.8f microseconds\n", execution_time);
     printf("\n\n");
 	
 	memcpy(QuickCopy, a, n*sizeof(int));
-	start = clock();
-	printf("Start time: %ld\n", (long)start);
-	//start_time = (long long)time(NULL)*1000000LL;
-	//printf("Start time: %lld\n", (long long)start_time);
+	start_time = clock();
 	quick_sort(QuickCopy, n);
-	end = clock();
-	//end_time = (long long)time(NULL)*1000000LL;	
+	end_time = clock();
+	elapsed_time = (double)(end_time - start_time) / CLOCKS_PER_SEC;
 	printf("The QuickSort-ed array: \n");
-	print_array(QuickCopy, n);
-	printf("End time: %ld\n", (long)end);
-	cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC; 
-    printf("Execution time of QuickSort: %f seconds\n", cpu_time_used);
-    //printf("End time: %lld\n", (long long)end_time);
-	//execution_time = (double) (end_time - start_time); 
-    //printf("Execution time of QuickSort: %.8f microseconds\n", execution_time);
+    printf("Execution time of QuickSort: %f seconds\n", elapsed_time);
+    print_array(QuickCopy, n);
     printf("\n\n");		
 }
